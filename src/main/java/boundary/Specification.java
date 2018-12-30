@@ -1,4 +1,7 @@
-package entity;
+package boundary;
+
+import entity.Color;
+import entity.EngineType;
 
 public class Specification {
 

@@ -1,8 +1,8 @@
-package control;
+package boundary;
 
-import boundary.CarRepository;
+import control.CarFactory;
+import control.CarRepository;
 import entity.Car;
-import entity.Specification;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -22,9 +22,5 @@ public class CarManufacturer {
         // Store car
         carRepository.store(car);
         return car;
-    }
-
-    private Car createCar(Specification specification) {
-        return carFactory.createCar(specification);
     }
 }
