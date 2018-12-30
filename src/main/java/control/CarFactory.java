@@ -1,6 +1,6 @@
 package control;
 
-import boundary.Specification;
+import entity.Specification;
 import entity.Car;
 import entity.Color;
 
