@@ -1,0 +1,13 @@
+JAXRSConfiguration.class
+entity/Specification.class
+boundary/CarManufacturer.class
+control/CarCreationListener.class
+entity/Color.class
+entity/CarCreated.class
+control/Diesel.class
+entity/EngineType.class
+control/CarFactory.class
+control/DefaultColorExposer.class
+entity/Car.class
+control/CarRepository.class
+boundary/CarResource.class

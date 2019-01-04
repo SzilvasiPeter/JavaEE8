@@ -3,12 +3,13 @@ package boundary;
 import control.CarFactory;
 import control.CarRepository;
 import entity.Car;
-import entity.CarCreated;
+import entity.EngineType;
 import entity.Specification;
 
 import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Stateless
 public class CarManufacturer {
@@ -19,8 +20,8 @@ public class CarManufacturer {
     @Inject
     CarRepository carRepository;
 
-    @Inject
-    Event<CarCreated> carCreated;
+    //@Inject
+    //Event<CarCreated> carCreated;
 
     public Car manufactureCar(Specification specification){
         Car car = carFactory.createCar(specification);
@@ -28,7 +29,23 @@ public class CarManufacturer {
         // Store car
         carRepository.store(car);
 
-        carCreated.fire(new CarCreated(car.getIdentifier()));
+        //carCreated.fire(new CarCreated(car.getIdentifier()));
         return car;
+    }
+
+    public List<Car> retrieveCars(){
+        return carRepository.loadCars();
+    }
+
+    public Car retrieveCar(String identifier) {
+        Car car = new Car();
+        car.setIdentifier(identifier);
+        return car;
+    }
+
+    public List<Car> retrieveCars(EngineType filter) {
+        return carRepository.loadCars().stream()
+                .filter(c -> c.getEngineType() == filter)
+                .collect(Collectors.toList());
     }
 }

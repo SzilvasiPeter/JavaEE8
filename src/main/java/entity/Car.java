@@ -1,9 +1,14 @@
 package entity;
 
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
+
 public class Car {
 
+    @JsonbTransient
     private String identifier;
     private Color color;
+    @JsonbProperty("engine")
     private EngineType engineType;
 
     public String getIdentifier() {

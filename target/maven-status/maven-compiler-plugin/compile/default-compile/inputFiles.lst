@@ -1,0 +1,13 @@
+/home/szilvasi/IdeaProjects/javaee/src/main/java/entity/Car.java
+/home/szilvasi/IdeaProjects/javaee/src/main/java/control/Diesel.java
+/home/szilvasi/IdeaProjects/javaee/src/main/java/entity/Specification.java
+/home/szilvasi/IdeaProjects/javaee/src/main/java/entity/EngineType.java
+/home/szilvasi/IdeaProjects/javaee/src/main/java/control/CarCreationListener.java
+/home/szilvasi/IdeaProjects/javaee/src/main/java/entity/CarCreated.java
+/home/szilvasi/IdeaProjects/javaee/src/main/java/boundary/CarManufacturer.java
+/home/szilvasi/IdeaProjects/javaee/src/main/java/control/DefaultColorExposer.java
+/home/szilvasi/IdeaProjects/javaee/src/main/java/entity/Color.java
+/home/szilvasi/IdeaProjects/javaee/src/main/java/boundary/CarResource.java
+/home/szilvasi/IdeaProjects/javaee/src/main/java/control/CarRepository.java
+/home/szilvasi/IdeaProjects/javaee/src/main/java/control/CarFactory.java
+/home/szilvasi/IdeaProjects/javaee/src/main/java/JAXRSConfiguration.java

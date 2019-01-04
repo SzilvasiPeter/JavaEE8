@@ -1,8 +1,14 @@
 package entity;
 
+import javax.validation.constraints.NotNull;
+
 public class Specification {
 
+    @NotNull
     private final Color color;
+
+    @NotNull
+    @EnviromentalFriendly
     private final EngineType engineType;
 
 
