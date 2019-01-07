@@ -2,11 +2,14 @@ package boundary;
 
 import control.CarFactory;
 import control.CarRepository;
+import control.CarStorageExecption;
 import entity.Car;
 import entity.EngineType;
 import entity.Specification;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,12 +30,14 @@ public class CarManufacturer {
     //@Inject
     //Event<CarCreated> carCreated;
 
-    public Car manufactureCar(Specification specification){
+    //@TransactionAttribute(TransactionAttributeType.REQUIRED)
+    public Car manufactureCar(Specification specification) throws CarStorageExecption {
         Car car = carFactory.createCar(specification);
 
         // Store car
         //carRepository.store(car);
         entityManager.persist(car);
+        //throw new CarStorageExecption("!");
         //carCreated.fire(new CarCreated(car.getIdentifier()));
         return car;
     }

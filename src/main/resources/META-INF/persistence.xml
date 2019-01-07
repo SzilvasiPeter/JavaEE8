@@ -3,8 +3,6 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <!-- Define persistence unit -->
     <persistence-unit name="prod" transaction-type="JTA">
-        <properties>
-            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-        </properties>
+        <jta-data-source>jdbc/CustomDS</jta-data-source>
     </persistence-unit>
 </persistence>

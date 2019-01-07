@@ -6,6 +6,7 @@ import entity.Specification;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.UUID;
 
 @Dependent
@@ -15,6 +16,7 @@ public class CarFactory {
     @Diesel
     Color defaultColor;
 
+    @Transactional(rollbackOn = CarStorageExecption.class)
     public Car createCar(Specification specification) {
         //if( new Random().nextBoolean())
         //    throw new CarCreationException("could not create car");
