@@ -1,9 +1,6 @@
 package boundary;
 
-import control.CarFactory;
-import control.CarRepository;
-import control.CarStorageExecption;
-import control.ProcessTrackingInterceptor;
+import control.*;
 import entity.Car;
 import entity.EngineType;
 import entity.Specification;
@@ -27,10 +24,17 @@ public class CarManufacturer {
     //@Inject
     //CarRepository carRepository;
 
-    @PersistenceContext
-    EntityManager entityManager;
+    //@PersistenceContext
+    //EntityManager entityManager;
+
     //@Inject
     //Event<CarCreated> carCreated;
+
+    @Inject
+    CarCache carCache;
+
+    @Inject
+    FatalLogger fatalLogger;
 
     //@TransactionAttribute(TransactionAttributeType.REQUIRED)
     //@Interceptors(ProcessTrackingInterceptor.class)
@@ -39,16 +43,24 @@ public class CarManufacturer {
 
         // Store car
         //carRepository.store(car);
-        entityManager.persist(car);
+        carCache.cache(car);
+        //entityManager.persist(car);
         //throw new CarStorageExecption("!");
         //carCreated.fire(new CarCreated(car.getIdentifier()));
+        try {
+
+        }catch (Exception e){
+            fatalLogger.fatal(e);
+        }
+
         return car;
     }
 
     public List<Car> retrieveCars(){
 
         //return carRepository.loadCars();
-        return entityManager.createNamedQuery(Car.FIND_ALL, Car.class).getResultList();
+        return carCache.retrieveCars();
+        //return entityManager.createNamedQuery(Car.FIND_ALL, Car.class).getResultList();
     }
 
     public Car retrieveCar(String identifier) {
