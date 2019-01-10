@@ -3,6 +3,7 @@ package boundary;
 import control.CarFactory;
 import control.CarRepository;
 import control.CarStorageExecption;
+import control.ProcessTrackingInterceptor;
 import entity.Car;
 import entity.EngineType;
 import entity.Specification;
@@ -11,6 +12,7 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -31,6 +33,7 @@ public class CarManufacturer {
     //Event<CarCreated> carCreated;
 
     //@TransactionAttribute(TransactionAttributeType.REQUIRED)
+    //@Interceptors(ProcessTrackingInterceptor.class)
     public Car manufactureCar(Specification specification) throws CarStorageExecption {
         Car car = carFactory.createCar(specification);
 

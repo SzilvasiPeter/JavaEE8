@@ -16,12 +16,16 @@ public class CarFactory {
     @Diesel
     Color defaultColor;
 
+    @Inject
+    @Config("identifier.prefix")
+    String identifierPrefix;
+
     @Transactional(rollbackOn = CarStorageExecption.class)
     public Car createCar(Specification specification) {
         //if( new Random().nextBoolean())
         //    throw new CarCreationException("could not create car");
         Car car = new Car();
-        car.setIdentifier(UUID.randomUUID().toString());
+        car.setIdentifier(identifierPrefix + "-" + UUID.randomUUID().toString());
         car.setColor(specification.getColor()==null? defaultColor: specification.getColor());
         car.setEngineType(specification.getEngineType());
         return car;
